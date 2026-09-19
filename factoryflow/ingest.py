@@ -96,7 +96,7 @@ class MockInboxSource(EmailSource):
             return
         for msg_dir in sorted(p for p in self.inbox_dir.iterdir() if p.is_dir()):
             meta_path = msg_dir / "message.json"
-            meta = json.loads(meta_path.read_text()) if meta_path.exists() else {}
+            meta = json.loads(meta_path.read_text(encoding="utf-8")) if meta_path.exists() else {}
             attachments = [
                 Attachment(
                     filename=f.name,

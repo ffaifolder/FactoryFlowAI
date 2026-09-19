@@ -27,14 +27,14 @@ LEDGER = [
 
 def _write_ledger(tmp_path):
     p = tmp_path / "ledger.json"
-    p.write_text(json.dumps(LEDGER))
+    p.write_text(json.dumps(LEDGER), encoding="utf-8")
     return p
 
 
 def test_zero_dep_dashboard(tmp_path):
     ledger = _write_ledger(tmp_path)
     out = build_dashboard(ledger, tmp_path / "dash" / "index.html")
-    html = out.read_text()
+    html = out.read_text(encoding="utf-8")
     assert "Beacon Components Co-op" in html
     assert "__DATA__" not in html  # placeholder was substituted
 
@@ -42,7 +42,7 @@ def test_zero_dep_dashboard(tmp_path):
 def test_tabler_dashboard(tmp_path):
     ledger = _write_ledger(tmp_path)
     out = build_tabler_dashboard(ledger, tmp_path / "app" / "index.html")
-    html = out.read_text()
+    html = out.read_text(encoding="utf-8")
     assert "./assets/tabler.min.css" in html
     assert "./assets/apexcharts.min.js" in html
     assert "VL-CON-10" in html

@@ -19,7 +19,7 @@ from pathlib import Path
 
 
 def _load_records(ledger_path: Path) -> list[dict]:
-    entries = json.loads(Path(ledger_path).read_text()) if Path(ledger_path).exists() else []
+    entries = json.loads(Path(ledger_path).read_text(encoding="utf-8")) if Path(ledger_path).exists() else []
     records = []
     for e in entries:
         d = e.get("dimensions", {})
@@ -48,7 +48,7 @@ def build_dashboard(ledger_path: str | Path, output_path: str | Path) -> Path:
     data_json = json.dumps(records)
     html = _TEMPLATE.replace("__DATA__", data_json)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(html)
+    output_path.write_text(html, encoding="utf-8")
     return output_path
 
 

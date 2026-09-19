@@ -79,7 +79,7 @@ class MockERPClient(ERPClient):
         if not self.invoices_dir.exists():
             return
         for path in sorted(self.invoices_dir.glob("*.json")):
-            data = json.loads(path.read_text())
+            data = json.loads(path.read_text(encoding="utf-8"))
             invoice = Invoice(
                 invoice_number=data["invoice_number"],
                 customer=data.get("customer", ""),

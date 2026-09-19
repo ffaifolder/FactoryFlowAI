@@ -135,7 +135,7 @@ def load_rules(path: str | Path | None = None) -> Rules:
     rules_path = Path(path) if path else DEFAULT_RULES_PATH
     if not rules_path.exists():
         raise FileNotFoundError(f"rules file not found: {rules_path}")
-    data = yaml.safe_load(rules_path.read_text()) or {}
+    data = yaml.safe_load(rules_path.read_text(encoding="utf-8")) or {}
     return Rules(
         currency=data.get("currency", "USD"),
         categories=data.get("categories", {}),

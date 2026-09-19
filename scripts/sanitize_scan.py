@@ -49,7 +49,7 @@ def load_blocklist(root: str | Path) -> list[str]:
 
     path = Path(root) / BLOCKLIST_FILE
     if path.exists():
-        for line in path.read_text().splitlines():
+        for line in path.read_text(encoding="utf-8").splitlines():
             line = line.split("#", 1)[0].strip()
             if line:
                 terms.append(line)

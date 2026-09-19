@@ -192,7 +192,7 @@ def _write_csv(path: Path, b: dict) -> None:
         lines.append(
             f"{it['item_code']},{it['upc']},{it['description']},{it['qty']},{it['extended_amount']}"
         )
-    path.write_text("\n".join(lines) + "\n")
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def _write_xlsx(path: Path, b: dict) -> None:
@@ -262,7 +262,7 @@ def generate_all(project_root: str | Path) -> None:
 
     invoices = _build_invoices()
     for inv_no, invoice in invoices.items():
-        (invoices_dir / f"{inv_no}.json").write_text(json.dumps(invoice, indent=2))
+        (invoices_dir / f"{inv_no}.json").write_text(json.dumps(invoice, indent=2), encoding="utf-8")
 
     for spec in DEDUCTION_SPECS:
         b = _backup_for_spec(spec, invoices)
@@ -285,7 +285,7 @@ def generate_all(project_root: str | Path) -> None:
                 f"of {b['currency']} {b['deduction_total']} against {b['invoice']}."
             ),
         }
-        (msg_dir / "message.json").write_text(json.dumps(message, indent=2))
+        (msg_dir / "message.json").write_text(json.dumps(message, indent=2), encoding="utf-8")
 
     print(
         f"Generated {len(invoices)} invoices and {len(DEDUCTION_SPECS)} inbox messages "

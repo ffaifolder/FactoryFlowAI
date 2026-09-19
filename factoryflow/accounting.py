@@ -72,7 +72,7 @@ class MockAccountingClient(AccountingClient):
     def flush(self) -> Path:
         """Persist all posted entries to ``ledger.json`` and return the path."""
         self.ledger_path.parent.mkdir(parents=True, exist_ok=True)
-        self.ledger_path.write_text(json.dumps(self.entries, indent=2))
+        self.ledger_path.write_text(json.dumps(self.entries, indent=2), encoding="utf-8")
         return self.ledger_path
 
 

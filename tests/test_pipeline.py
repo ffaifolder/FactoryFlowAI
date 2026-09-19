@@ -62,7 +62,7 @@ def test_ledger_written(synthetic_root):
 
 def test_sanitize_scan_detects_terms(tmp_path):
     # Detection works when terms are supplied explicitly (no real names needed).
-    (tmp_path / "leak.txt").write_text("contact jdoe at Acme Corporation today")
+    (tmp_path / "leak.txt").write_text("contact jdoe at Acme Corporation today", encoding="utf-8")
     findings = scan_repo(tmp_path, terms=["Acme Corporation"])
     assert findings and findings[0][2] == "Acme Corporation"
 

@@ -29,11 +29,11 @@ class VoltlineCsvParser(BackupParser):
     def can_parse(self, path: Path) -> bool:
         if path.suffix.lower() != ".csv":
             return False
-        head = path.read_text(errors="ignore").lower()
+        head = path.read_text(encoding="utf-8", errors="ignore").lower()
         return "deduction_total" in head
 
     def parse(self, path: Path) -> DeductionBackup:
-        rows = list(csv.reader(path.read_text().splitlines()))
+        rows = list(csv.reader(path.read_text(encoding="utf-8").splitlines()))
         meta: dict[str, str] = {}
         items: list[LineItem] = []
         header: list[str] | None = None

@@ -29,7 +29,7 @@ def build_tabler_dashboard(ledger_path: str | Path, output_path: str | Path) -> 
     records = _load_records(ledger_path)
     html = _TEMPLATE.replace("__DATA__", json.dumps(records))
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    output_path.write_text(html)
+    output_path.write_text(html, encoding="utf-8")
     return output_path
 
 
