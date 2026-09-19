@@ -1,0 +1,7 @@
+{
+  "message_id": "msg_0001",
+  "subject": "Deduction on INV-100234 \u2014 SHORTAGE",
+  "sender": "ap@beaconcomponents.example",
+  "received_at": "2026-09-01T09:15:00",
+  "body": "Please see attached backup for a SHORTAGE deduction of USD 31.30 against INV-100234."
+}

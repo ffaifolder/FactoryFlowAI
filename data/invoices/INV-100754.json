@@ -1,0 +1,34 @@
+{
+  "invoice_number": "INV-100754",
+  "po_number": "PO-55330",
+  "customer": "Beacon Components Co-op",
+  "order_date": "2026-08-10",
+  "terms": "1/15 NET45",
+  "currency": "USD",
+  "lines": [
+    {
+      "sku": "VL-CON-50",
+      "upc": "300000000050",
+      "description": "Power Connector 50A",
+      "qty": 120,
+      "unit_price": "4.25",
+      "extended_amount": "510.00"
+    },
+    {
+      "sku": "VL-CON-10",
+      "upc": "300000000010",
+      "description": "Terminal Connector 10A",
+      "qty": 144,
+      "unit_price": "1.85",
+      "extended_amount": "266.40"
+    },
+    {
+      "sku": "VL-RLY-24",
+      "upc": "300000000024",
+      "description": "Control Relay 24V",
+      "qty": 40,
+      "unit_price": "7.10",
+      "extended_amount": "284.00"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "invoice_number": "INV-100477",
+  "po_number": "PO-55145",
+  "customer": "Ironclad Industrial Supply",
+  "order_date": "2026-07-22",
+  "terms": "NET30",
+  "currency": "USD",
+  "lines": [
+    {
+      "sku": "VL-WIR-RL",
+      "upc": "300000005000",
+      "description": "THHN Wire Bulk Reel 5000ft",
+      "qty": 40,
+      "unit_price": "480.00",
+      "extended_amount": "19200.00"
+    },
+    {
+      "sku": "VL-BRK-3P",
+      "upc": "300000000103",
+      "description": "Circuit Breaker 100A 3-Pole",
+      "qty": 24,
+      "unit_price": "96.00",
+      "extended_amount": "2304.00"
+    },
+    {
+      "sku": "VL-BRK-100",
+      "upc": "300000000100",
+      "description": "Circuit Breaker 100A",
+      "qty": 36,
+      "unit_price": "42.00",
+      "extended_amount": "1512.00"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "invoice_number": "INV-100692",
+  "po_number": "PO-55271",
+  "customer": "Harbor Point Electronics",
+  "order_date": "2026-08-03",
+  "terms": "2/10 NET30",
+  "currency": "USD",
+  "lines": [
+    {
+      "sku": "VL-RLY-12",
+      "upc": "300000000012",
+      "description": "Control Relay 12V",
+      "qty": 64,
+      "unit_price": "6.40",
+      "extended_amount": "409.60"
+    },
+    {
+      "sku": "VL-CAP-450",
+      "upc": "300000000450",
+      "description": "Motor Run Capacitor 450V",
+      "qty": 300,
+      "unit_price": "9.75",
+      "extended_amount": "2925.00"
+    },
+    {
+      "sku": "VL-BRK-15",
+      "upc": "300000000015",
+      "description": "Circuit Breaker 15A",
+      "qty": 48,
+      "unit_price": "8.90",
+      "extended_amount": "427.20"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "factoryflow-deduction-coder"
+version = "0.1.0"
+description = "ERP-agnostic scaffold that automates deduction coding: ingest -> parse -> resolve -> allocate -> post."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["deductions", "trade-spend", "erp", "accounting", "finance-automation"]
+dependencies = ["PyYAML>=6.0"]
+
+[project.optional-dependencies]
+xlsx = ["openpyxl>=3.1"]
+pdf = ["pdfplumber>=0.10"]
+dev = ["pytest>=7.0", "openpyxl>=3.1"]
+
+[project.scripts]
+factoryflow-demo = "factoryflow.demo:main"
+
+[tool.setuptools]
+packages = ["factoryflow", "factoryflow.parsers", "scripts"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

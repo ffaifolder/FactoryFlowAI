@@ -1,0 +1,16 @@
+# Data-safety denylist — COPY this file to `.sanitize_blocklist` and add your
+# own real terms there. `.sanitize_blocklist` is git-ignored and must never be
+# committed. Do NOT put real names in THIS example file.
+#
+# One term per line. Case-insensitive substring match. `#` starts a comment.
+# Alternatively set FACTORYFLOW_SANITIZE_TERMS="Term A,Term B" (e.g. in CI).
+#
+# Add the real names your sanitized project must never leak, for example:
+#   - real customer / retailer / distributor names
+#   - the real product brand you reimplemented
+#   - internal identifiers, private repo names, personal emails/usernames
+#
+# Placeholder examples (replace with your own):
+Acme Corporation
+Globex Foods
+jdoe@example.com

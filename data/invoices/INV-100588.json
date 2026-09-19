@@ -1,0 +1,34 @@
+{
+  "invoice_number": "INV-100588",
+  "po_number": "PO-55203",
+  "customer": "Meridian Trade Group",
+  "order_date": "2026-07-29",
+  "terms": "NET15",
+  "currency": "USD",
+  "lines": [
+    {
+      "sku": "VL-CAP-100",
+      "upc": "300000000101",
+      "description": "Film Capacitor 100uF",
+      "qty": 72,
+      "unit_price": "3.30",
+      "extended_amount": "237.60"
+    },
+    {
+      "sku": "VL-CON-10",
+      "upc": "300000000010",
+      "description": "Terminal Connector 10A",
+      "qty": 96,
+      "unit_price": "1.85",
+      "extended_amount": "177.60"
+    },
+    {
+      "sku": "VL-RLY-24",
+      "upc": "300000000024",
+      "description": "Control Relay 24V",
+      "qty": 180,
+      "unit_price": "7.10",
+      "extended_amount": "1278.00"
+    }
+  ]
+}

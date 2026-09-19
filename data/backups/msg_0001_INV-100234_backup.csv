@@ -1,0 +1,10 @@
+customer,Beacon Components Co-op
+invoice,INV-100234
+deduction_type,SHORTAGE
+reason_code,SHT-01
+currency,USD
+deduction_total,31.30
+
+item_code,upc,description,qty,extended_amount
+VL-CON-10,300000000010,Terminal Connector 10A,8,14.80
+VL-CAP-100,300000000101,Film Capacitor 100uF,5,16.50

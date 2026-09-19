@@ -1,0 +1,8 @@
+customer,Ridgeline Electric Supply
+invoice,INV-100311
+deduction_type,PROMOTION
+reason_code,PRO-14
+currency,USD
+deduction_total,125.30
+
+item_code,upc,description,qty,extended_amount

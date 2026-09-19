@@ -1,0 +1,7 @@
+# Runtime dependencies for FactoryFlow AI — Deduction Coder.
+PyYAML>=6.0        # required: reads config/rules.yaml
+openpyxl>=3.1      # optional: enables the .xlsx backup format (pipeline skips it if absent)
+
+# Optional: route PDF text extraction through pdfplumber for real-world PDFs.
+#   pip install pdfplumber   and set FACTORYFLOW_PDF_BACKEND=pdfplumber
+# The built-in reader handles the demo's generated PDFs with no extra deps.

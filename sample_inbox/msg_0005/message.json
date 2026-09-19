@@ -1,0 +1,7 @@
+{
+  "message_id": "msg_0005",
+  "subject": "Deduction on INV-100692 \u2014 TERM_DISCOUNT",
+  "sender": "ap@harborpointelec.example",
+  "received_at": "2026-09-01T09:15:00",
+  "body": "Please see attached backup for a TERM_DISCOUNT deduction of USD 75.24 against INV-100692."
+}

@@ -1,0 +1,8 @@
+customer,Harbor Point Electronics
+invoice,INV-100692
+deduction_type,TERM_DISCOUNT
+reason_code,TRM-01
+currency,USD
+deduction_total,75.24
+
+item_code,upc,description,qty,extended_amount

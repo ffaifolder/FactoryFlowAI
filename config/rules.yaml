@@ -1,0 +1,92 @@
+# FactoryFlow AI — Deduction Coder :: business rules
+# ---------------------------------------------------------------------------
+# Everything that is business-specific lives here so the code stays generic.
+# Adopters edit this file (and the GL map) to match their own chart of
+# accounts, category taxonomy, and channel rules — no code changes required.
+#
+# All values below are SYNTHETIC and describe a fictional electrical-parts
+# brand ("Voltline Components"). Replace them with your own.
+# ---------------------------------------------------------------------------
+
+currency: USD
+
+# --- Product category taxonomy --------------------------------------------
+# A SKU is mapped to a category. Exact-SKU matches win over prefix matches.
+categories:
+  by_prefix:
+    "VL-CON": "Connectors"
+    "VL-BRK": "Circuit-Breakers"
+    "VL-WIR": "Wire-Cable"
+    "VL-RLY": "Relays"
+    "VL-CAP": "Capacitors"
+  by_sku: {}            # optional exact-SKU overrides, e.g. "VL-CON-10": "..."
+  default: "Uncategorized"
+
+# --- Sales channels --------------------------------------------------------
+# Channel resolution order for a line:
+#   1. first matching entry in `overrides` (SKU-level rules), then
+#   2. `by_customer` default for the deduction's customer, then
+#   3. the global `default`.
+channels:
+  default: "Retail"
+  by_customer:
+    "Ridgeline Electric Supply": "Distributor"
+    "Beacon Components Co-op": "Retail"
+    "Ironclad Industrial Supply": "Industrial"
+    "Meridian Trade Group": "Retail"
+    "Harbor Point Electronics": "Ecommerce"
+  # SKU-level overrides, evaluated top-to-bottom; first match wins.
+  overrides:
+    # "bulk / industrial" style rule: bulk reels and multi-pole gear are
+    # industrial, regardless of which customer the deduction came from.
+    - name: "bulk-industrial"
+      match:
+        sku_suffix_in: ["RL", "3P", "IND"]   # reel / 3-pole / industrial pack
+      channel: "Industrial"
+    # High-amperage breakers route to Industrial via numeric rating suffix.
+    - name: "high-amperage-industrial"
+      match:
+        sku_prefix: "VL-BRK"
+        min_unit_size: 100                    # 100A and up
+      channel: "Industrial"
+
+# --- Payment terms ---------------------------------------------------------
+# Effective discount rate keyed by the terms string on the invoice. Used when
+# coding TERM_DISCOUNT (cash-discount) deductions and to sanity-check amounts.
+payment_terms:
+  "NET30": 0.0
+  "NET15": 0.0
+  "2/10 NET30": 0.02
+  "1/15 NET45": 0.01
+
+# --- GL account mapping ----------------------------------------------------
+# Resolution order when coding a split:
+#   1. by_deduction_type[<TYPE>]        (if set and not null)
+#   2. by_category_channel["<cat>|<chan>"]
+#   3. computed: "<promo_prefix>-<cat>-<chan>"
+#   4. default
+gl_accounts:
+  default: "5900-Deductions-Uncategorized"
+  promo_prefix: "5000-TradePromo"
+  by_deduction_type:
+    FREIGHT: "5410-Freight-Out"
+    SHORTAGE: "5300-Shortage-Claims"
+    DAMAGE: "5310-Damage-Claims"
+    DEFECTIVE: "5320-Defective-Claims"
+    TERM_DISCOUNT: "4910-Cash-Discounts"
+    PROMOTION: null            # null => fall through to category/channel map
+  by_category_channel:
+    "Connectors|Retail": "5010-TradePromo-Connectors-Retail"
+    "Connectors|Industrial": "5011-TradePromo-Connectors-Industrial"
+    "Capacitors|Industrial": "5020-TradePromo-Capacitors-Industrial"
+
+# --- Allocation behaviour --------------------------------------------------
+allocation:
+  # Split weights come from the shipped sales-dollar value per SKU.
+  weight_basis: "extended_amount"
+  # Cent-accurate rounding so splits always re-sum to the deduction total.
+  rounding: "largest_remainder"
+  # If a backup file itemises specific SKUs, restrict allocation to those
+  # (matched against the invoice). If false, always allocate across the whole
+  # invoice regardless of what the backup itemised.
+  restrict_to_backup_items: true

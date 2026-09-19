@@ -1,0 +1,34 @@
+{
+  "invoice_number": "INV-100234",
+  "po_number": "PO-55021",
+  "customer": "Beacon Components Co-op",
+  "order_date": "2026-07-14",
+  "terms": "1/15 NET45",
+  "currency": "USD",
+  "lines": [
+    {
+      "sku": "VL-CON-10",
+      "upc": "300000000010",
+      "description": "Terminal Connector 10A",
+      "qty": 120,
+      "unit_price": "1.85",
+      "extended_amount": "222.00"
+    },
+    {
+      "sku": "VL-RLY-12",
+      "upc": "300000000012",
+      "description": "Control Relay 12V",
+      "qty": 80,
+      "unit_price": "6.40",
+      "extended_amount": "512.00"
+    },
+    {
+      "sku": "VL-CAP-100",
+      "upc": "300000000101",
+      "description": "Film Capacitor 100uF",
+      "qty": 60,
+      "unit_price": "3.30",
+      "extended_amount": "198.00"
+    }
+  ]
+}
